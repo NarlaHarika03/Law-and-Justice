@@ -1,6 +1,7 @@
 import gemini 
 import google.generativeai as genai
 import lawyer2
+import input1
 
 
 genai.configure(api_key = "AIzaSyDY-P9ow5xwXSYVAosPKmZLA5VA40JTC0k")
@@ -14,6 +15,7 @@ def get_text1(law):
     text1 = '''
     mention the specifications of that lawyer in just one line compulsory
     '''
+    global lawyer
     lawyer = []
     spec = []
     ex = []
@@ -31,11 +33,10 @@ def get_text1(law):
                 ex.append(i.strip("**"))
             lawyer.extend(ex)
     lawyer = list(set(lawyer))
-    lawyer2.get_text4(lawyer)
+    input1.get_text4(lawyer)
     print('lawyer = ')
     print(lawyer)
-
+def fun():    
+    return lawyer
 # print(lawyer)
-
-# def law_fun():
-#     return lawyer      
+      
