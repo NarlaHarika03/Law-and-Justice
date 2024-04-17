@@ -42,7 +42,7 @@ def signup():
         connection.close()
         return render_template('home.html')
     except IntegrityError as e:
-        return render_template('login.html')
+        return render_template('login_check.html', error = "User already exists")
     
 @app.route('/login1', methods = ['GET', 'POST'])
 def login1():
@@ -78,9 +78,9 @@ def login():
     connection.close()
 
     if(count[0] == (0,) and email[0] == (0,)):
-        return render_template('signup.html', error = "Sign Up before you Login")
+        return render_template('signup_check.html', error = "Sign Up before you Login")
     elif(count[0] == (0,) and password[0] == (0,)):
-        return render_template('login.html', error = "Invalid Email Or Password")
+        return render_template('login_check.html', error = "Invalid Email Or Password")
     else:
         return render_template('home.html')
 
