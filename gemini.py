@@ -7,9 +7,14 @@ import lawyer
 import legalll 
 import recom
 from flask import Flask, render_template, request
+from dotenv import load_dotenv
+load_dotenv()
+
+import os
+api_key1 = os.environ.get("API_KEY")
 
 #to get the key for the gemini ai
-genai.configure(api_key = "AIzaSyDY-P9ow5xwXSYVAosPKmZLA5VA40JTC0k")
+genai.configure(api_key = api_key1)
 
 #this command is to get the model of gemini ai
 model = genai.GenerativeModel('gemini-pro')

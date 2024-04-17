@@ -25,6 +25,7 @@ create table users (
     user_contact INT
 );
 
+
 Use oracle;
 Alter table lawyer modify lawyerID varchar(50);
 
