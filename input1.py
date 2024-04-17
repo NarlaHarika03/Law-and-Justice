@@ -4,9 +4,6 @@ import lawyer
 import mysql.connector 
 from mysql.connector import IntegrityError
 
-
-
-
 connection = mysql.connector.connect(
     host = "localhost",
     user = "Harika",
@@ -46,6 +43,10 @@ def signup():
         return render_template('home.html')
     except IntegrityError as e:
         return render_template('login.html')
+    
+@app.route('/login1', methods = ['GET', 'POST'])
+def login1():
+    return render_template('login.html')    
 
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
@@ -72,13 +73,14 @@ def login():
     cursor.execute(retrive_query2,(password,))
     password = cursor.fetchall()
 
+    print(count, email, password)
     cursor.close()
     connection.close()
 
-    if(len(count) == 0 and (len(email) or len(password))):
-        return render_template('login.html', error = "Invalid Email Or Password")
-    elif(len(email) == 0 and len(password) == 0):
+    if(count[0] == (0,) and email[0] == (0,)):
         return render_template('signup.html', error = "Sign Up before you Login")
+    elif(count[0] == (0,) and password[0] == (0,)):
+        return render_template('login.html', error = "Invalid Email Or Password")
     else:
         return render_template('home.html')
 
