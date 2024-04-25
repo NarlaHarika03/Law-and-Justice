@@ -26,7 +26,7 @@ def get_text(problem):
     print("text = ", text)
 
     text1 = '''
-        mention the appropriate categories of lawyers more than two for sure, each in one line as points numbered 1,2 etc this person should approach and any legal aid consultancy if required as points numbered 1,2 etc.
+        mention the appropriate categories of lawyers more than one for sure, each in one line as points numbered 1,2 etc this person should approach and any legal aid consultancy if required as points numbered 1,2 etc.
         Provide them as legal categories of lawyers, legal aid consultancies just give the names no description for categories of lawyers
         Provide the required steps 8 to 10 minimum to be taken as points numbered 1,2 etc by the person please dont put any unneccessary stars in output. 
         '''

@@ -100,9 +100,31 @@ def index():
     gemini.get_text(problem)
     lawy = lawyer.fun()
     print('input1 = ', lawy)
+    lawy1 = list(set(lawy))
+    connection = mysql.connector.connect(
+    host = "localhost",
+    user = "Harika",
+    password = "sunrika#1903*",
+    database = "lawyers"
+    )
+    db = []
+    cursor = connection.cursor()
+    for spec in lawy1:
+        if(spec == ' '):
+            continue
+        first_word = spec.split()[0]  
+        retrieve = "SELECT * FROM lawyer_details WHERE specification LIKE %s"
+        cursor.execute(retrieve, (f"{first_word}%",)) 
+        result = cursor.fetchall()
+        print("result = ", result)
+        if result:
+            db.append(result)
+    cursor.close()
+    connection.close()    
     if request.method == 'POST':
-        print(lawy)
-    return render_template('index.html', lst = lawy)
+        print(lawy1)
+    return render_template('index.html', lst = db)
+
 
 
 if __name__ == '__main__':

@@ -14,7 +14,8 @@ genai.configure(api_key = api_key1)
 model = genai.GenerativeModel('gemini-pro')
 def get_text1(law):
     text = '''
-    mention the category of the lawyer in just one line compulsory no description only category
+    mention the category of the lawyer(give in this format specification lawyer donot mention law/Attorney and give one specification only once) in just one line compulsory no description only category
+    do not give all the lawyers give only those whose specification is matching with given text
     '''
 
     text1 = '''
@@ -35,6 +36,7 @@ def get_text1(law):
             output = output.strip("**")
             l = list(output.split("**"))
             for i in l:
+                i = i.strip("\n-")
                 ex.append(i.strip("**"))
             lawyer.extend(ex)
     lawyer = list(set(lawyer))
