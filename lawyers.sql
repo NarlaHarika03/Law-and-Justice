@@ -72,4 +72,5 @@ Values
 ('F', 'F@gmail.com', 'xxxxxxxxxF', 'Criminal Lawyer', 'As a criminal lawyer, I am driven by a profound commitment to justice and the protection of individual rights. With a keen understanding of the complexities of the legal system, I fearlessly advocate for my clients, ensuring their voices are heard and their rights are upheld. Through unwavering dedication and strategic prowess, I strive to secure fair outcomes and defend the presumption of innocence, empowering individuals facing criminal charges to navigate the legal process with confidence and dignity.','1968-12-20','25 years','https://www.freepik.com/free-photos-vectors/lawyer-character/15');
 
 use lawyers;
-update lawyer_details set photo = 'https://www.freepik.com/free-photos-vectors/lawyer-character/15' where 1=1;
+update lawyer_details set photo = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIfHTWQQ9v5dmvO80sWzgQ2_1br7OkJIzPIg&s" where 1=1;
+

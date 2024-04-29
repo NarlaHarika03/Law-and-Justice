@@ -108,6 +108,7 @@ def index():
     database = "lawyers"
     )
     db = []
+    emails = []
     cursor = connection.cursor()
     for spec in lawy1:
         if(spec == ' '):
@@ -116,15 +117,19 @@ def index():
         retrieve = "SELECT * FROM lawyer_details WHERE specification LIKE %s"
         cursor.execute(retrieve, (f"{first_word}%",)) 
         result = cursor.fetchall()
-        print("result = ", result)
-        if result:
-            db.append(result)
+        for res in result:
+            if res:
+                res = list(res)
+                if res[1] not in emails:
+                    db.append(res)
+                    print("db = ", db)
+                    emails.extend(str(res[1]))
+
     cursor.close()
     connection.close()    
     if request.method == 'POST':
         print(lawy1)
     return render_template('index.html', lst = db)
-
 
 
 if __name__ == '__main__':
