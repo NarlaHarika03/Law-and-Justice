@@ -123,7 +123,8 @@ def index():
                 if res[1] not in emails:
                     db.append(res)
                     print("db = ", db)
-                    emails.extend(str(res[1]))
+                    emails.append((res[1]))
+                print(emails)    
 
     cursor.close()
     connection.close()    
