@@ -27,7 +27,9 @@ def get_text(problem):
 
     text1 = '''
         Behave as a legal advisor
-        mention the appropriate categories of lawyers more than one for sure, each in one line as points numbered 1,2 etc this person should approach. 
+        from the mentioned lawyers mention the appropriate categories of lawyers more than one for sure, each in one line as points numbered 1,2 etc this person should approach.
+        family lawyer, civil litigation lawyer, criminal lawyer, Real estate lawyer, Trail Lawyer, Bankruptcy Lawyer, Estate Planning Lawyer,
+        Probate Lawyer, Tax Lawyer, Immigration Lawyer, Intellectual Property Lawyer, Corporate Lawyer, Property Lawyer, Contract Lawyer
         Provide heading as legal categories of lawyers dont give any description only names.
         '''
     response = model.generate_content((text.strip() + text1), stream = True)
@@ -36,58 +38,26 @@ def get_text(problem):
     lawyers = []
     legal = []
     other = []
-    l = []
     l1 = []
+    lawyers_names=[]
     for chunk in response:
-        output = chunk.text 
+        output = chunk.text
         print(output)
-    # print(output)
-        l.extend(output.split("**"))
-    # print(l)    
-    for i in l:
-        l1.extend(i.split("\n*"))
+    
+    # Use findall on the output string instead of the list
+        lawyers_names.extend(re.findall(r'\d+\.\s*(.*?)(?:\n|$)', output))
 
-# print(l1)    
-    for i in range(len(l1)):
-        if l1[i] == '' or l1[i] == '\n':
-            continue
-        if re.search("Categories of Lawyers", l1[i]):
-            for j in range(i+1, len(l1)):
-                if re.search("Legal Aid Consultancies", l1[j]):
-                    break 
-                l1[j].strip("\n")
-                l2 = list(l1[j].split("\n"))
-                lawyers.extend(l2)
-        elif re.search("Legal Aid Consultancies", l1[i]):
-            for j in range(i + 1, len(l1)):
-                if re.search("Steps", l1[j]):
-                    break 
-                else:
-                    l1[j].strip("\n*")
-                    l1[j].strip("*\n")
-                    l2 = list(l1[j].split("\n"))
-                    legal.extend(l2)  
-        elif re.search("Steps", l1[i]):
-            for j in range(i + 1, len(l1)):
-                l1[j].strip("\n*")
-                l1[j].strip("*\n")
-                l2 = list(l1[j].split("\n"))
-                other.extend(l2)                   
-    for law in lawyers:
-        law = law.replace("\n*", "") 
-    for leg in legal:
-        leg = leg.replace("\n*", "") 
-    for oth in other:
-        oth = oth.replace("\n*", "")
+    print(lawyers_names)
+
     print('\n\nLawyers')
     print(lawyers)
     print('\n\nLegal Aid')
     print(legal)
     print('\n\nRecommendations')
     print(other) 
-    lawyer.get_text1(lawyers)
-    legalll.get_text2(legal)
-    recom.get_text3(other)
+    lawyer.get_text1(lawyers_names)
+    # legalll.get_text2(legal)
+    # recom.get_text3(other)
 
 
 # def send_lawyers():
