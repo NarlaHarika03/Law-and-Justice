@@ -17,7 +17,7 @@ api_key1 = os.environ.get("API_KEY")
 genai.configure(api_key = api_key1)
 
 #this command is to get the model of gemini ai
-model = genai.GenerativeModel('gemini-pro')
+model = genai.GenerativeModel('gemini-1.5-pro')
 
 text = ''
 def get_text(problem):
@@ -27,9 +27,8 @@ def get_text(problem):
 
     text1 = '''
         Behave as a legal advisor
-        mention the appropriate categories of lawyers more than one for sure, each in one line as points numbered 1,2 etc this person should approach and any legal aid consultancy if required as points numbered 1,2 etc.
-        Provide them as legal categories of lawyers, legal aid consultancies just give the names no description for categories of lawyers
-        Provide the required steps 8 to 10 minimum to be taken as points numbered 1,2 etc by the person please dont put any unneccessary stars in output. 
+        mention the appropriate categories of lawyers more than one for sure, each in one line as points numbered 1,2 etc this person should approach. 
+        Provide heading as legal categories of lawyers dont give any description only names.
         '''
     response = model.generate_content((text.strip() + text1), stream = True)
 
@@ -41,6 +40,7 @@ def get_text(problem):
     l1 = []
     for chunk in response:
         output = chunk.text 
+        print(output)
     # print(output)
         l.extend(output.split("**"))
     # print(l)    

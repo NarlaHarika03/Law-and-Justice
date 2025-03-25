@@ -139,4 +139,14 @@ insert into lawyer_details (law_name, law_email, law_contact, specification, abo
 Values
 ('Q', 'Q@gmail.com', 'xxxxxxxxxxQ', 'Contract Lawyer', 'As a dedicated contract lawyer, I bring a meticulous and strategic approach to all aspects of contract management. My expertise includes commercial contracts, employment agreements, and partnership agreements, ensuring that my clients achieve clear, enforceable, and favorable terms in all their contractual dealings.','1965-05-09','22 years','https://www.freepik.com/free-photos-vectors/lawyer-character/15');
 
+use lawyers;
+insert into lawyer_details (law_name, law_email, law_contact, specification, about, Dob, experience, photo)
+Values
+('R', 'R@gmail.com', 'xxxxxxxxxxR', 'Litigation Lawyer', 'As a dedicated litigation lawyer, I bring a meticulous and strategic approach to all aspects of contract management. My expertise includes commercial contracts, employment agreements, and partnership agreements, ensuring that my clients achieve clear, enforceable, and favorable terms in all their contractual dealings.','1965-05-09','22 years','https://www.freepik.com/free-photos-vectors/lawyer-character/15');
+
+use lawyers;
+insert into lawyer_details (law_name, law_email, law_contact, specification, about, Dob, experience, photo)
+Values
+('S', 'S@gmail.com', 'xxxxxxxxxxS', 'Commercial Lawyer', 'As a dedicated commercial lawyer, I bring a meticulous and strategic approach to all aspects of contract management. My expertise includes commercial contracts, employment agreements, and partnership agreements, ensuring that my clients achieve clear, enforceable, and favorable terms in all their contractual dealings.','1965-05-09','22 years','https://www.freepik.com/free-photos-vectors/lawyer-character/15');
+
 

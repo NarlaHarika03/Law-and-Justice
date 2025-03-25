@@ -11,7 +11,7 @@ api_key1 = os.environ.get("API_KEY")
 
 genai.configure(api_key = api_key1)
 
-model = genai.GenerativeModel('gemini-pro')
+model = genai.GenerativeModel('gemini-1.5-pro')
 def get_text1(law):
     text = '''
     mention the category of the lawyer(give in this format specification lawyer donot mention law/Attorney and give one specification only once) in just one line compulsory no description only category

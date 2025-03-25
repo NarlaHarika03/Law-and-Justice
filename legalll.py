@@ -8,7 +8,7 @@ api_key1 = os.environ.get("API_KEY")
 
 genai.configure(api_key = api_key1)
 
-model = genai.GenerativeModel('gemini-pro')
+model = genai.GenerativeModel('gemini-1.5-pro')
 
 def get_text2(legal):
     text = '''
